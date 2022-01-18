@@ -59,10 +59,9 @@ public class UrlController {
     @GetMapping(value = "/{url}/info")
     public ModelAndView getUrlInfo(@PathVariable String url) {
         ModelAndView mav = new ModelAndView("url_info");
-        String resultUrl = urlProcessingService.generateUrl(url);
-        mav.addObject("generatedUrl", resultUrl);
-        mav.addObject("timesVisited", urlProcessingService.getTimesWasVisited(resultUrl));
-        mav.addObject("timesGenerated", urlProcessingService.getTimesWasShortened(resultUrl));
+        mav.addObject("generatedUrl", url);
+        mav.addObject("timesVisited", urlProcessingService.getTimesWasVisited(url));
+        mav.addObject("timesGenerated", urlProcessingService.getTimesWasShortened(url));
         return mav;
     }
 
