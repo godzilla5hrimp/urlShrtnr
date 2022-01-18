@@ -9,9 +9,11 @@
 <div class="container">
     <h2>Generated link:</h2>
     <p th:text="'shrt-nr.herokuapp.com/'+${generatedUrl}"></p>
-    <h2>Generated link statistics.</h2>
-    <p th:text="'Number of times link was generated:'+ ${timesGenerated}"/>
-    <p th:text="'Number of times link was visited:'+ ${timesVisited}"/>
+    <p>
+        <a th:href="@{/{id}/info(id=${generatedUrl})}">
+            Generated link statistics.
+        </a>
+    </p>
     <a href="/">Home</a>
 </div>
 </body>
