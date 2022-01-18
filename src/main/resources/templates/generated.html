@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="EN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="../static/css/index.css" th:href="@{/css/index.css}" rel="stylesheet">
+    <title>URL Info</title>
+</head>
+<body>
+<div class="container">
+    <h2>Generated link:</h2>
+    <p th:text="'shrt-nr.herokuapp.com/'+${generatedUrl}"></p>
+    <h2>Generated link statistics.</h2>
+    <p th:text="'Number of times link was generated:'+ ${timesGenerated}"/>
+    <p th:text="'Number of times link was visited:'+ ${timesVisited}"/>
+    <a href="/">Home</a>
+</div>
+</body>
+</html>

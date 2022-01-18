@@ -28,7 +28,7 @@ public class UrlController {
     @RequestMapping(path = "/generate-url", method = RequestMethod.POST)
     public ModelAndView generateUrl(@ModelAttribute(value = "name") String name) {
         if(urlValidator.validateURL(name)) {
-            ModelAndView mav = new ModelAndView("url_info");
+            ModelAndView mav = new ModelAndView("generated");
             String resultUrl = urlProcessingService.generateUrl(name);
             mav.addObject("generatedUrl", resultUrl);
             mav.addObject("timesVisited", urlProcessingService.getTimesWasVisited(resultUrl));
@@ -51,5 +51,19 @@ public class UrlController {
         return "redirect:".concat(originalUrl);
     }
 
+    /**
+     * Give user statistic on generated link.
+     * @param url - shortened URL.
+     * @return
+     */
+    @GetMapping(value = "/{url}/info")
+    public ModelAndView getUrlInfo(@PathVariable String url) {
+        ModelAndView mav = new ModelAndView("url_info");
+        String resultUrl = urlProcessingService.generateUrl(url);
+        mav.addObject("generatedUrl", resultUrl);
+        mav.addObject("timesVisited", urlProcessingService.getTimesWasVisited(resultUrl));
+        mav.addObject("timesGenerated", urlProcessingService.getTimesWasShortened(resultUrl));
+        return mav;
+    }
 
 }
