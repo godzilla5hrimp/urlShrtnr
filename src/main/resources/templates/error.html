@@ -1,0 +1,50 @@
+<html lang="EN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="../static/css/index.css" th:href="@{/css/index.css}" rel="stylesheet">
+    <title>Error</title>
+</head>
+<body>
+    <div class="container">
+        <p>
+            <h1>Someting bad happened, we're sorry.</h1>
+            <h1>Please go back to the home-page</h1>
+        <a href="/">Country roads, take me home.</a>
+        </p>
+        <h2>Error summary:</h2>
+        <table>
+            <tr>
+                <td>Date</td>
+                <td th:text="${timestamp}"/>
+            </tr>
+            <tr>
+                <td>Path</td>
+                <td th:text="${path}"/>
+            </tr>
+            <tr>
+                <td>Error</td>
+                <td th:text="${error}"/>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td th:text="${status}"/>
+            </tr>
+            <tr>
+                <td>Message</td>
+                <td th:text="${message}"/>
+            </tr>
+            <tr>
+                <td>Exception</td>
+                <td th:text="${exception}"/>
+            </tr>
+            <tr>
+                <td>Trace</td>
+                <td>
+                    <pre th:text="${trace}"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+.* {
+    background-color: #f7f7f7;
+}
+
+html {
+    background-color: #f7f7f7;
+}
+
+h1 {
+  font-size: 26px;
+  text-transform: none;
+}
+
+p , ul, li, a{
+  font-size: 22px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.main-header {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.container {
+    width: 800px;
+    height: auto;
+    margin: 0 auto;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="EN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>URL shrtnr</title>
+    <link href="../static/css/index.css" th:href="@{/css/index.css}" rel="stylesheet">
+    <link href="menu.html" rel="import" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <header class="main-header">
+        <h1>Shrtnr</h1>
+        <nav>
+            <button class="login-btn" disabled="true">Login</button>
+            <button class="register-btn" disabled="true">Register</button>
+        </nav>
+    </header>
+    <div class="container">
+        <p>
+            This is Shrtr - a basic web service for shortening your URL.
+            If you want to have your link shortened put it in the input box and press 'Generate URL' button.
+        </p>
+        <p>
+            This particular service was done as a technical challenge, so it has some rules of generating URLs.
+            The rules are:
+            <ul>
+                <li>Users can enter a URL on a page and get back a shortened version. The shortened
+                    version of a URL is the same for every shortening request.</li>
+                <li>If this shortened URL is used as an address in a browser, the user should be
+                    redirected to the original URL.</li>
+                <li>For each shortened URL, the following statistics should be kept:
+                    <ul>
+                        <li>How often was the URL shortened?</li>
+                        <li>How often was the shortened URL accessed?</li>
+                        <li>Anyone can see the statistics. It should also be displayed automatically after
+                            each shortening.</li>
+                    </ul>
+                </li>
+
+            </ul>
+        </p>
+        <label for="name">URL:</label>
+        <form method="POST" th:action="@{/generate-url}" th:object="${name}">
+            <input type="text" id="name" name="name" required
+                   minlength="4" size="10">
+            <button class="generate_url">Generate URL</button>
+        </form>
+    </div>
+</body>
+</html>
