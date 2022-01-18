@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <link href="../static/css/index.css" th:href="@{/css/index.css}" rel="stylesheet">
+    <script>
+        window.location.hash="no-back-button";
+        window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
+        window.onhashchange=function(){window.location.hash="no-back-button";}
+    </script>
     <title>URL Info</title>
 </head>
 <body>
+
     <div class="container">
         <h2>Generated link:</h2>
-        <p th:text="'shrt-nr.herokuapp.com/'+${generatedUrl}"></p>
+        <a th:href="@{/{id}(id=${generatedUrl})}">
+            <p th:text="'shrt-nr.herokuapp.com/'+${generatedUrl}"></p>
+        </a>
         <h2>Generated link statistics.</h2>
         <p th:text="'Number of times link was generated:'+ ${timesGenerated}"/>
         <p th:text="'Number of times link was visited:'+ ${timesVisited}"/>
