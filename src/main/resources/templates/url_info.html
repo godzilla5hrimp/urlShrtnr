@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <h2>Generated link:</h2>
-        <a th:href="@{/{id}(id=${generatedUrl})}"><p th:text="'shrt-nr.herokuapp.com/'+${generatedUrl}"></p></a>
+        <p th:text="'shrt-nr.herokuapp.com/'+${generatedUrl}"></p></a>
         <h2>Generated link statistics:</h2>
         <p th:text="'Number of times link was generated:'+ ${timesGenerated}"/>
         <p th:text="'Number of times link was visited:'+ ${timesVisited}"/>
