@@ -8,7 +8,7 @@
 <body>
 <div class="container">
     <h2>Generated link:</h2>
-    <p th:text="'shrt-nr.herokuapp.com/'+${urlProcessingService.generateUrl(name)}"></p>
+    <p th:text="'shrt-nr.herokuapp.com/'+${urlProcessingService.generateUrl(${urlOr})}"></p>
     <p>
         <a th:href="@{/{id}/info(id=${generatedUrl})}">
             Generated link statistics.

@@ -29,7 +29,7 @@ public class UrlController {
     public ModelAndView generateUrl(@ModelAttribute(value = "name") String name) {
         if(urlValidator.validateURL(name)) {
             ModelAndView mav = new ModelAndView("generated");
-            mav.addObject("name", name);
+            mav.addObject("urlOr", name);
             return mav;
         } else {
             throw new RuntimeException("Please enter a valid URL!");
