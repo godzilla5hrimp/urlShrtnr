@@ -43,7 +43,7 @@
             <form method="POST" th:action="@{/generate-url}" th:object="${url}">
                 <input type="text" id="name" name="name" required
                        minlength="4" size="10">
-                <input type="hidden" id="url" th:value="''" th:attr="name='url'"/>
+                <input id="url" name="url" type="hidden" id="url" th:value="''" th:attr="name='url'"/>
                 <button class="generate_url" th:onclick="url=${urlProcessingService.generateUrl(name)}">Generate URL</button>
 
             </form>
