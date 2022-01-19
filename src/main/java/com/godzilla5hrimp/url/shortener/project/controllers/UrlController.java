@@ -29,14 +29,19 @@ public class UrlController {
     public ModelAndView generateUrl(@ModelAttribute(value = "name") String name) {
         if(urlValidator.validateURL(name)) {
             ModelAndView mav = new ModelAndView("generated");
-            String resultUrl = urlProcessingService.generateUrl(name);
-            mav.addObject("generatedUrl", resultUrl);
-            mav.addObject("timesVisited", urlProcessingService.getTimesWasVisited(resultUrl));
-            mav.addObject("timesGenerated", urlProcessingService.getTimesWasShortened(resultUrl));
+//            String resultUrl = urlProcessingService.generateUrl(name);
+//            mav.addObject("generatedUrl", resultUrl);
+//            mav.addObject("timesVisited", urlProcessingService.getTimesWasVisited(resultUrl));
+//            mav.addObject("timesGenerated", urlProcessingService.getTimesWasShortened(resultUrl));
             return mav;
         } else {
             throw new RuntimeException("Please enter a valid URL!");
         }
+    }
+
+    @PostMapping(path = "/generate")
+    public String generate(@ModelAttribute(value = "name") String name) {
+        return urlProcessingService.generateUrl(name);
     }
 
     /**
