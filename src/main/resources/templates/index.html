@@ -39,10 +39,11 @@
             </ul>
         </p>
         <label for="name">URL:</label>
-        <form method="POST" th:action="@{/generate-url}" th:object="${@urlProcessingService.generateUrl(name)}">
+        <form method="POST" th:action="@{/generate-url}" th:object="${url}">
             <input type="text" id="name" name="name" required
                    minlength="4" size="10">
             <button class="generate_url">Generate URL</button>
+            <input type="hidden" th:value="${@urlProcessingService.generateUrl(name)}" th:attr="name='url'"/>
         </form>
     </div>
 </body>
