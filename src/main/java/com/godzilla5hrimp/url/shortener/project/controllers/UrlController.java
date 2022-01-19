@@ -36,10 +36,6 @@ public class UrlController {
         }
     }
 
-    @PostMapping(path = "/generate")
-    public String generate(@ModelAttribute(value = "name") String name) {
-        return urlProcessingService.generateUrl(name);
-    }
 
     /**
      * Redirect user with specific shorten URL to original one.
