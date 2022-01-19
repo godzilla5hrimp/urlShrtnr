@@ -39,7 +39,7 @@
             </ul>
         </p>
         <label for="name">URL:</label>
-        <div th:with="url=${''}}">
+        <div th:with="url}">
             <form method="POST" th:action="@{/generate-url}" th:object="${url}">
                 <input type="text" id="name" name="name" required
                        minlength="4" size="10">
