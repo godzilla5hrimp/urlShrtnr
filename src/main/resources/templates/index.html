@@ -41,11 +41,11 @@
         <label for="name">URL:</label>
 
             <form method="POST" th:action="@{/generate-url}" th:object="${url}">
-                <div th:with="url=${name}">
                 <input type="text" id="name" name="name" required
                        minlength="4" size="10">
+                <input type="hidden" id="url" th:attr="name='url'"/>
                 <button class="generate_url" th:onclick="url=${urlProcessingService.generateUrl(name)}">Generate URL</button>
-                </div>
+
             </form>
 
     </div>
