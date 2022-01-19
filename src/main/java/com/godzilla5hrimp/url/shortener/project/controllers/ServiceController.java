@@ -23,6 +23,7 @@ public class ServiceController {
     @GetMapping(value = "/")
     public String getMainPage(Model model) {
         model.addAttribute("name", "");
+        model.addAttribute("url", "");
         return "index";
     }
 
