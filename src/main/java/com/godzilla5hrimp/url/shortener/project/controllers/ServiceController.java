@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Controller class for handling business-logic of an application.
@@ -21,10 +22,11 @@ public class ServiceController {
      * @return
      */
     @GetMapping(value = "/")
-    public String getMainPage(Model model) {
-        model.addAttribute("name", "");
-        model.addAttribute("url", "");
-        return "index";
+    public ModelAndView getMainPage(Model model) {
+        ModelAndView mav = new ModelAndView("index");
+        mav.addObject("name", "");
+        mav.addObject("url", "");
+        return mav;
     }
 
 }
