@@ -32,7 +32,7 @@ public class UrlController {
             mav.addObject("urlGen", name);
             return mav;
         } else {
-            throw new RuntimeException("Please enter a valid URL!");
+            throw new RuntimeException("Please enter a valid URL! Current input:" + name);
         }
     }
 
