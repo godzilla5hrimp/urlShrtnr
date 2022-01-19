@@ -26,7 +26,7 @@ public class UrlController {
      * @throws RuntimeException - throws RuntimeException to trigger error page.
      */
     @RequestMapping(path = "/generate-url", method = RequestMethod.POST)
-    public ModelAndView generateUrl(@ModelAttribute(value = "name") String name) {
+    public ModelAndView generateUrl(@ModelAttribute(value = "url") String name) {
         if(urlValidator.validateURL(name)) {
             ModelAndView mav = new ModelAndView("generated");
             mav.addObject("urlGen", name);
