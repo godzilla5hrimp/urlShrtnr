@@ -22,14 +22,18 @@ public class UrlController {
     /**
      * Generate shortened URL for user and show him info page.
      * @param name - original URL.
+     * @param userId - userId that generated URL.
      * @return
-     * @throws RuntimeException - throws RuntimeException to trigger error page.
      */
     @RequestMapping(path = "/generate-url", method = RequestMethod.POST)
-    public ModelAndView generateUrl(@ModelAttribute(value = "name") String name, @ModelAttribute(value = "userId") Long userId) {
+    public ModelAndView generateUrl(@ModelAttribute(value = "name") String name, @RequestParam(value = "userId") Long userId) {
+        //TODO: Need to configure using JWT for logged in users
         if(urlValidator.validateURL(name)) {
             ModelAndView mav = new ModelAndView("generated");
-            mav.addObject("urlGen", urlProcessingService.generateUrl(name, userId));
+            if(userId == null)
+                mav.addObject("urlGen", urlProcessingService.generateUrl(name, null));
+            else
+                mav.addObject("urlGen", urlProcessingService.generateUrl(name, userId));
             return mav;
         } else {
             throw new RuntimeException("Please enter a valid URL! Current input:" + name);

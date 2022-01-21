@@ -49,7 +49,7 @@
             <form method="POST" th:action="@{/generate-url}">
                 <input type="text" id="name" name="name" required
                        minlength="4" size="10">
-                <input id="url" name="url" type="hidden" th:value="''" />
+                <input id="userId" name="userId" type="hidden" th:value=${userId}>
                 <button class="generate_url">Generate URL</button>
 
             </form>

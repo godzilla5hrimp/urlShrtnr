@@ -58,6 +58,7 @@ public class ServiceController {
         return "login";
     }
 
+    //TODO: Need to configure using JWT for logged in users
     @PostMapping(value = "/login")
     public ModelAndView postLoginUser(@ModelAttribute(value = "userName") String userName, @ModelAttribute(value = "password") String password) {
         try {
