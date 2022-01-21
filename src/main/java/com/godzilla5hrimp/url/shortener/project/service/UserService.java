@@ -1,5 +1,6 @@
 package com.godzilla5hrimp.url.shortener.project.service;
 
+import com.godzilla5hrimp.url.shortener.project.exceptions.LoginErrorException;
 import com.godzilla5hrimp.url.shortener.project.exceptions.WrongPasswordException;
 import com.godzilla5hrimp.url.shortener.project.model.UserModel;
 import com.godzilla5hrimp.url.shortener.project.repository.UserModelRepository;
@@ -27,14 +28,14 @@ public class UserService {
         return true;
     }
 
-    public boolean loginUser(String userName, String password) {
+    public Long loginUser(String userName, String password) {
         UserModel foundUser = userModelRepository.findByUserName(userName);
         String decPsw = Sha512DigestUtils.shaHex(password);
         if (foundUser != null
                 && foundUser.getPassword().equals(decPsw)) {
-            return true;
+            return foundUser.getId();
         } else {
-            throw new WrongPasswordException("Wrong password for the specified user!");
+            throw new LoginErrorException("Failed to sign in!\nPlease make sure that you've entered your login and password correctly.");
         }
     }
 

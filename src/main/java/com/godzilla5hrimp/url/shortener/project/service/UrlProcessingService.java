@@ -33,16 +33,17 @@ public class UrlProcessingService {
      * @param originalUrl - original URL that was input by user.
      * @return
      */
-    public String generateUrl(String originalUrl) {
+    public String generateUrl(String originalUrl, Long userId) {
         if(!originalUrl.isEmpty()) {
             UrlModel url = new UrlModel();
             url.setUrlOr(originalUrl);
-            Long urlHash = Long.valueOf(url.hashCode());
+            Long urlHash = Long.valueOf(url.hashCode()) + userId;
             if(urlModelRepository.findByUrlHash(urlHash) == null) {
                 url.setUrlHash(urlHash);
                 String urlShrt = createUniqueID(url.getUrlHash());
                 url.setUrlShrt(urlShrt);
                 url.setNmbShrt(url.getNmbShrt() + 1);
+                url.setUserId(userId);
                 urlModelRepository.save(url);
                 logger.info("Entity was saved: urlModel: {};", url.toString());
                 return urlShrt;

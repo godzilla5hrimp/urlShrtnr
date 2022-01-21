@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <link href="../static/css/index.css" th:href="@{/css/index.css}" rel="stylesheet">
-    <title>Shrt-nr: Login Page</title>
+    <title>Shrt-nr: Login failed!</title>
 </head>
 <body>
     <header class="main-header">
         <h1>Login:</h1>
-
-
-
+        <div class="error">
+            <p th:text="${errorMessage}">
+        </div>
         <form method="POST" th:action="@{/login}">
             <label for="userName">Username:</label>
             <input type="text" id="userName" name="userName" required

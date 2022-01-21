@@ -1,5 +1,6 @@
 package com.godzilla5hrimp.url.shortener.project.controllers;
 
+import com.godzilla5hrimp.url.shortener.project.exceptions.LoginErrorException;
 import com.godzilla5hrimp.url.shortener.project.service.UrlProcessingService;
 import com.godzilla5hrimp.url.shortener.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,10 +60,15 @@ public class ServiceController {
 
     @PostMapping(value = "/login")
     public ModelAndView postLoginUser(@ModelAttribute(value = "userName") String userName, @ModelAttribute(value = "password") String password) {
-        ModelAndView mav = new ModelAndView("index");
-        userService.loginUser(userName, password);
-        mav.addObject("userName", userName);
-        return mav;
+        try {
+            ModelAndView mav = new ModelAndView("index");
+            mav.addObject("userId", userService.loginUser(userName, password));
+            return mav;
+        } catch (LoginErrorException e) {
+            ModelAndView mav = new ModelAndView("login_failed");
+            mav.addObject("errorMessage", e.getMessage());
+            return mav;
+        }
     }
 
 }
