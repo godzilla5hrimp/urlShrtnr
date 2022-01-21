@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="EN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="../static/css/index.css" th:href="@{/css/index.css}" rel="stylesheet">
+    <title>Shrt-nr: Register Page</title>
+</head>
+<body>
+    <header class="main-header">
+        <h1>Register:</h1>
+        <form method="POST" th:action="@{/register}">
+            <input type="text" id="userName" name="userName" required
+                minlength="4" size="20">
+            <input type="password" id="password" name="password" required
+                minlength="8">
+            <button>Register</button>
+        </form>
+    </header>
+    <p>
+        <a href="/">Home</a>
+    </p>
+</body>
+</html>

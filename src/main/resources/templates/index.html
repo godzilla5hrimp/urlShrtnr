@@ -10,8 +10,14 @@
     <header class="main-header">
         <h1>Shrtnr</h1>
         <nav>
-            <button class="login-btn" disabled="true">Login</button>
-            <button class="register-btn" disabled="true">Register</button>
+            <form th:action="@{'/login'}" th:method="get">
+                <button class="login-btn">Login</button>
+            </form>
+
+            <form th:action="@{'/register'}" th:method="get">
+                <button class="register-btn">Register</button>
+            </form>
+
         </nav>
     </header>
     <div class="container">

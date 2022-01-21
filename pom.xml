@@ -81,7 +81,12 @@
 			<version>2.7</version>
 		</dependency>
 	</dependencies>
-
+	<!-- APACHE COMMONS CODEC -->
+	<dependency>
+		<groupId>commons-codec</groupId>
+		<artifactId>commons-codec</artifactId>
+		<version>1.15</version>
+	</dependency>
 	<build>
 		<plugins>
 			<plugin>
